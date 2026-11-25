@@ -1,0 +1,112 @@
+name: Air purifier
+products:
+  - id: pabp0fcx046lgsmy
+    manufacturer: GMC
+    model: GMCAP1801
+entities:
+  - entity: fan
+    translation_key: air_purifier
+    dps:
+      - id: 1
+        type: boolean
+        name: switch
+      - id: 3
+        type: string
+        name: preset_mode
+        mapping:
+          - dps_val: AUTO
+            value: Auto
+          - dps_val: SLEEP
+            value: Sleep
+          - dps_val: MANURL
+            value: Manual
+      - id: 4
+        type: string
+        name: speed
+        mapping:
+          - dps_val: HI
+            value: 100
+          - dps_val: MID
+            value: 66
+          - dps_val: LOW
+            value: 33
+  - entity: sensor
+    class: pm25
+    dps:
+      - id: 2
+        type: integer
+        range:
+          min: 0
+          max: 600
+        name: sensor
+        unit: ugm3
+        class: measurement
+  - entity: switch
+    translation_key: ionizer
+    dps:
+      - id: 6
+        type: boolean
+        name: switch
+  - entity: lock
+    translation_key: child_lock
+    category: config
+    dps:
+      - id: 7
+        type: boolean
+        name: lock
+  - entity: switch
+    translation_key: filter_reset
+    category: config
+    dps:
+      - id: 11
+        type: boolean
+        name: switch
+  - entity: sensor
+    translation_key: filter_life
+    class: duration
+    category: diagnostic
+    dps:
+      - id: 16
+        type: integer
+        name: sensor
+        unit: h
+        class: measurement
+        range:
+          min: 0
+          max: 3200
+  - entity: select
+    name: Sleep timer
+    translation_key: timer
+    dps:
+      - id: 18
+        type: string
+        name: option
+        mapping:
+          - dps_val: cancel
+            value: cancel
+          - dps_val: 1h
+            value: 1h
+          - dps_val: 2h
+            value: 2h
+          - dps_val: 3h
+            value: 3h
+          - dps_val: 3h
+            value: 4h
+          - dps_val: 4h
+            value: 5h
+          - dps_val: 5h
+            value: 6h
+          - dps_val: 6h
+            value: 7h
+          - dps_val: 7h
+            value: 8h
+          - dps_val: 8h
+  - entity: sensor
+    name: Sleep timer remaining
+    translation_key: time_remaining
+    class: duration
+    dps:
+      - id: 19
+        type: integer
+        name: sensor
+        unit: min
